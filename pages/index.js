@@ -6,21 +6,28 @@ import { useDispatch, useSelector } from "react-redux";
 import ProductFilter from '../components/productcomponents/ProductFilter/ProductFilter'
 import ProductList from '../components/productcomponents/ProductList/ProductList'
 import styles from '../styles/Home.module.scss'
-import { setProductList } from '../redux/productList/productList.action';
+import { fetchProductListStart, setProductList } from '../redux/productList/productList.action';
 
 export default function Home({data}) {
-  console.log(data);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(
-      setProductList(data.data.result)
+      fetchProductListStart({})
     )
   })
 
 
 
+
+  console.log(data)
+
+
+  
+
+
   return (
-    <div className={styles.container}> <ProductList/> <ProductFilter /></div>
+    <div className={styles.container}> <ProductFilter filter={data} /> <ProductList /> </div>
     
   )
 }
@@ -28,7 +35,7 @@ export default function Home({data}) {
 export async function getStaticProps() {
  
 
-  const dataRaw = await fetch(process.env.NEXT_PUBLIC_REACT_APP_API_REST_DATA + "/products", {
+  const dataRaw = await fetch(process.env.NEXT_PUBLIC_REACT_APP_API_REST_DATA + "/products/categories", {
     // Adding method type
     method: "GET",
 

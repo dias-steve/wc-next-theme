@@ -27,3 +27,8 @@ export const setPagination = (paginationData) => (
         payload: paginationData
     }
 )
+
+export const fetchProductListStart = (filter) => ({
+    type: productListTypes.FETCH_PRODUCT_LIST_START,
+    payload: filter
+});
