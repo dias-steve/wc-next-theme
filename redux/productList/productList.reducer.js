@@ -2,7 +2,14 @@ import productListTypes from './productList.types'
 
 export const INITIAL_STATE = {
     filter : {
-        cat: []
+        taxinomy:{},
+        sort:null,
+        limit:null,
+        page:null,
+        postin: null,
+        numericalfilter:[
+
+        ]
     },
     product_list: [],
     is_loading: false,

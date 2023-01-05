@@ -12,8 +12,7 @@ const mapState = (state) => ({
 })
 export default function ProductList() {
   const {productList, isLoading} = useSelector(mapState);
-  console.log(productList)
-  console.log(isLoading)
+
   return (
     <div>{ isLoading ? '...loading' : productList.map((product) => <ProductCard key={uuidv4()} content={product}/> )}
       
