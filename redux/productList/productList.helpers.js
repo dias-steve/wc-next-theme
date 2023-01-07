@@ -1,8 +1,8 @@
 
 
-export const handleFetchProductList = () =>{
+export const handleFetchProductList = (query) =>{
     return new Promise((resolve, reject) => {
-        fetch(process.env.NEXT_PUBLIC_REACT_APP_API_REST_DATA + "/products", {
+        fetch(process.env.NEXT_PUBLIC_REACT_APP_API_REST_DATA + "/products"+query, {
             // Adding method type
             method: "GET",
         

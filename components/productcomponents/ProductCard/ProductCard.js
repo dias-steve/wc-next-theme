@@ -3,11 +3,11 @@ import Link from 'next/link'
 import React from 'react'
 import styles from './ProductCard.module.scss'
 export default function ProductCard({content}) {
-  const {title, thumbnail, link} = content
+  const {title, thumbnail, link, price} = content
   return (
     <Link className={styles.container_link} href={link}>
     <div className={styles.container}>
-      <h1 className={styles.title}>{title}</h1>
+    
       <div className={styles.image_wrapper}>
         <Image 
           src={thumbnail.url}
@@ -16,6 +16,8 @@ export default function ProductCard({content}) {
           className={styles.image}
         />
       </div>
+      <h1 className={styles.title}>{title}</h1>
+      <p>{price}€</p>
     </div>
     </Link>
   )

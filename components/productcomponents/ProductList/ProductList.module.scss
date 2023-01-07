@@ -1,0 +1,13 @@
+
+.global_container{
+    display: flex;
+    margin: 0;
+
+}
+.grid{
+    width: clamp(0px, 80%, 1000px);
+    display:grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  
+}

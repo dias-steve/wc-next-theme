@@ -2,7 +2,7 @@ import productListTypes from './productList.types'
 
 export const INITIAL_STATE = {
     filter : {
-        taxinomy:{},
+        taxinomy:null,
         sort:null,
         limit:null,
         page:null,

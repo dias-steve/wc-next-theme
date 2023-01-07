@@ -12,9 +12,7 @@ export default function Home({data}) {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(
-      fetchProductListStart({})
-    )
+
   })
 
 
