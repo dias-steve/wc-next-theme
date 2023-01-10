@@ -24,15 +24,31 @@ export const removeCategorieInFilter = (
   dispatch(setFilter(newFilter));
 };
 
-export const addNumericalFilterInFilter = (key, operator, currentFilter, dispatch) =>{
+export const addNumericalFilterInFilter = (key, operator, value,currentFilter, dispatch) =>{
   dispatch(
-    setFilter(getAddNumericalFilterInFilter(key,operator,currentFilter))
+    setFilter(getAddNumericalFilterInFilter(key,operator,value,currentFilter))
   )
 }
 
-export const removeNumericalFilterInFilter = (key, operator, currentFilter, dispatch) =>{
+export const addListOfNumericalFilter = (listNumericalFilter, currentFilter, dispatch) =>{
   dispatch(
-    setFilter(getRemoveNumericalFilterInFilter(key,operator,currentFilter))
+    setFilter(getAddListOfNumericalFilter(listNumericalFilter,currentFilter))
+  )
+}
+export const getAddListOfNumericalFilter = (listNumericalFilter,currentFilter) =>{
+  const newCurrentFilter = listNumericalFilter.reduce((newFilter, numericalFilter ) => {
+    const {key, operator, value} = numericalFilter
+    newFilter=getAddNumericalFilterInFilter(key, operator, value,newFilter)
+    return newFilter
+  }, currentFilter)
+
+  return newCurrentFilter;
+  
+}
+
+export const removeNumericalFilterInFilter = (key, operator,value, currentFilter, dispatch) =>{
+  dispatch(
+    setFilter(getRemoveNumericalFilterInFilter(key,operator,value,currentFilter))
   )
 }
 
@@ -234,4 +250,6 @@ export const getRemoveNumericalFilterInFilter = (key, operator, initialFilter) =
   
   return {...initialFilter, numericalfilter: newNumericalFilter.length >0 ? newNumericalFilter : null}
 }
+
+
 

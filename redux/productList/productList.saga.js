@@ -1,5 +1,5 @@
 import { takeLatest, put, all, call } from 'redux-saga/effects';
-import { filterConverterToQuery, getListQueryConverter } from '../../components/productcomponents/ProductCategorieFilter/ProductCategorieFilter.utils';
+import { filterConverterToQuery, getListQueryConverter} from '../../utils/Product/Filter/ProductFilter.utils';
 import { setIsLoading, setProductList } from './productList.action';
 import { handleFetchProductList } from './productList.helpers';
 import productListTypes from './productList.types';

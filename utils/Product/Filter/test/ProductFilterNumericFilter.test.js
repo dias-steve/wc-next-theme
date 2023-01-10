@@ -1,4 +1,4 @@
-import { getAddNumericalFilterInFilter, getRemoveNumericalFilterInFilter } from "../ProductCategorieFilter.utils";
+import { getAddListOfNumericalFilter, getAddNumericalFilterInFilter, getRemoveNumericalFilterInFilter } from "../ProductFilter.utils";
 
 describe("Adding new numeric Filter",() => {
     test("Work with a first new numeric Filter", () => {
@@ -215,4 +215,41 @@ describe("Remove new numeric Filter",() => {
      
 
 
+})
+
+
+
+describe("Add numericalfilter list",() => {
+  test("Work with a first new numeric Filter", () => {
+      const initialFilter = {
+          taxinomy: null,
+          sort: null,
+          limit: null,
+          page: null,
+          postin: null,
+          numericalfilter: null,
+        };
+        const newFilter1 = getAddListOfNumericalFilter(
+          [{operator: '>=', key:'_price', value:'20'}, {operator: '<=', key:'_price', value:'200'}],
+          initialFilter
+        );
+
+
+      expect(newFilter1).toStrictEqual({
+          taxinomy:null,
+          sort: null,
+          limit: null,
+          page: null,
+          postin: null,
+          numericalfilter: [{
+              key: '_price',
+              operator: '>=',
+              value:'20'
+            }, {
+              key: '_price',
+              operator: '<=',
+              value:'200'
+            }],
+      });
+  })
 })

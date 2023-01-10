@@ -3,9 +3,11 @@
 // all = pour avoir des resultat en parallèle et call pour appeler des async fonction
 import { all, call } from 'redux-saga/effects';
 import productListSagas from './productList/productList.saga';
+import singleProductSagas from './singleproduct/singleproduct.saga'
 
 export default function* rootSaga() {
     yield all([
-        call(productListSagas)
+        call(productListSagas),
+        call(singleProductSagas)
     ])
 }

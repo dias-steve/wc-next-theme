@@ -1,0 +1,14 @@
+.global{
+
+}
+
+.option_btn{
+  
+    &.option_not_available{
+        background-color: brown;
+    }
+
+    &.selected{
+        background-color: blue;
+    }
+}

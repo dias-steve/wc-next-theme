@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { addCategorieInFilter, isCategorySelected, removeCategorieInFilter } from './ProductCategorieFilter.utils';
+import { addCategorieInFilter, isCategorySelected, removeCategorieInFilter } from '../../../utils/Product/Filter/ProductFilter.utils';
 import { useDispatch, useSelector } from "react-redux";
 import styles from './ProductFilter.module.scss';
 
@@ -37,14 +37,8 @@ const mapState = (state) => ({
 })
 export default function ProductCategorieFilter({categorieData}) {
   const {categorie_flat} = categorieData;
-  const {filter} = useSelector(mapState);
-  const dispatch = useDispatch();
-  useEffect(() => {
 
 
-
-   
-  },[])
 
   return (
     <div>{categorie_flat.map((category) => {

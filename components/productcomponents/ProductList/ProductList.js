@@ -18,10 +18,16 @@ export default function ProductList() {
 
   useEffect(
     () => {
+      //abort the fetching if we left the component
+      const controller = new AbortController();
       dispatch(
         fetchProductListStart(filter)
       )
+      return () => {
+        controller.abort()
+      }
     },
+
 
   [filter])
   return (

@@ -7,13 +7,13 @@ import ProductCategorieFilter from '../components/productcomponents/ProductCateg
 import ProductList from '../components/productcomponents/ProductList/ProductList'
 import styles from '../styles/Home.module.scss'
 import { fetchProductListStart, setProductList } from '../redux/productList/productList.action';
+import ProductFilterPrice from '../components/productcomponents/ProductFilterPrice/ProductFilterPrice';
+import ProductSortbyPrice from '../components/productcomponents/ProductSortbyPrice/ProductSortByPrice.js';
 
 export default function Home({data}) {
 
   const dispatch = useDispatch();
-  useEffect(() => {
 
-  })
 
 
 
@@ -25,7 +25,13 @@ export default function Home({data}) {
 
 
   return (
-    <div className={styles.container}> <ProductCategorieFilter  categorieData={data} /> <ProductList /> </div>
+    <div className={styles.container}> 
+      <ProductCategorieFilter  categorieData={data} /> 
+
+      <ProductSortbyPrice />
+      <ProductList />
+  
+    </div>
     
   )
 }
