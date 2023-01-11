@@ -58,29 +58,11 @@ describe('Check getListValiationValueAvailble', () => {
 
         expect(child).toEqual(
             {
-                variationKey:"attribute_pa_color",
-                valueList:[
-                    {
-                        value: "blue",
-                        availble: true,
-                    },
-                    {
-                        value: "gray",
-                        availble: false,
-                    },
-                    {
-                        value: "green",
-                        availble: false,
-                    },
-                    {
-                        value: "red",
-                        availble: false,
-                    },
-                    {
-                        value: "yellow",
-                        availble: true,
-                    },
-                ]
+               attribute_pa_color:
+              {"blue": true, "gray": false, "green": false, "red": false, "yellow": true}
+                     
+          
+                
 
             }
         )

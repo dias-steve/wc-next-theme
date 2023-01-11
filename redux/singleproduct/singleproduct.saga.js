@@ -1,12 +1,12 @@
 import { takeLatest, put, all, call, select} from 'redux-saga/effects';
 
-import { setListVariations, setProductParent, setSelectedProduct, setVariationSelected, singleProductTypes } from './singleproduct.reducer';
-import { getChildBySelector, getFirstChildAvaible } from '../../utils/Product/VariationSelector/ProductVariationSelector.utils';
+import { setListVariations, setProductParent, setSelectedProduct, setVariationSelected, setVariationStockStatus, singleProductTypes } from './singleproduct.reducer';
+import { getChildBySelector, getFirstChildAvaible, getListVariationValueAvailble, getVariationAvailableValue } from '../../utils/Product/VariationSelector/ProductVariationSelector.utils';
 
-export const getPorductParent = (state) => state.singleproduct
+export const getSingleProduct = (state) => state.singleproduct
+
+
 export function* setSingleProductDataToStore({payload}){
-
-    try{
 
         const {list_variations} = payload
         yield put(
@@ -16,12 +16,24 @@ export function* setSingleProductDataToStore({payload}){
             setListVariations(list_variations)
         )
 
-        let state = yield select(getPorductParent); 
+        let state = yield select(getSingleProduct); 
 
         const {product_parent:{children}} = state
 
+      
+        //get the product Selected
         const childSelected = getFirstChildAvaible(children)
       
+     
+        // we get the list of varable value available with
+        const variationsSelectedArray = getVariationAvailableValue(childSelected.variation_name,children);
+
+
+
+        yield put(setVariationStockStatus( variationsSelectedArray))
+      
+        
+
      
  
         yield put(
@@ -34,37 +46,45 @@ export function* setSingleProductDataToStore({payload}){
 
         //selected variables
 
-        getFirstChildAvaible(childSelected)
-    }catch(err){
-        console.log(err)
-    }
 }
-
 
 
 export function*setVariationSelectedStart({payload}){
 
   
-        let state = yield select(getPorductParent); 
+        let state = yield select(getSingleProduct); 
 
-        const {product_parent:{children}} = state
+        const {product_parent:{children}, variations_selected} = state
 
-        const childSelected = getChildBySelector(payload,children)
-  
+        const newVariationSelected = {...variations_selected, ...payload}
+        //get the product selected
+        const childSelected = getChildBySelector(newVariationSelected,children)
+        
+         // we get the list of varable value available with
+        const variationsSelectedArray = getVariationAvailableValue(childSelected.variation_name,children);
+
+
+
+        yield put(setVariationStockStatus( variationsSelectedArray))
 
         yield put(
-            setVariationSelected(payload)
+            setVariationSelected(newVariationSelected)
         )
 
         yield put(
             setSelectedProduct(childSelected)
         )
-        
-   
-
-
 
 }
+
+
+
+/*=============================================
+=            connextiont            =
+=============================================*/
+
+
+
 
 export function* onSetParentProductStart(){
     yield takeLatest(singleProductTypes.ON_SET_PRODUCT_PARENT_START, setSingleProductDataToStore)
@@ -73,6 +93,15 @@ export function* onSetParentProductStart(){
 export function* onSetVariation(){
     yield takeLatest(singleProductTypes.SET_LIST_VARIATION_SELECTED_START, setVariationSelectedStart)
 }
+
+
+
+/*=============================================
+=            CALL            =
+=============================================*/
+
+
+
 
 export default function* singleProductSagas(){
     yield all([

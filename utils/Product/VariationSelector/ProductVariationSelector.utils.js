@@ -29,18 +29,25 @@ export function getChildBySelector(
 
   export function  getListVariationValueAvailble( variationsSelected, variationKey, childrensProductList){
 
-    const variableSelectedfilter = variationsSelected;
-    delete variableSelectedfilter[variationKey];
+    const variableSelectedfilter = Object.entries(variationsSelected).reduce((acc, current)=> {
+      const [key, value] = current
+      if(key !== variationKey){
+        acc = {...acc, [key]: value}
+      }
+      return acc;
+    }, {})
 
+ 
     const listchildProduct = getChildBySelector( variableSelectedfilter , childrensProductList)
       .reduce((listValue, child )=> {
-        const {variation_name, product_is_in_stock} = child;
+        const {variation_name, product_is_in_stock} = child;``
+        const valueName = variation_name[variationKey] 
+   
+        return listValue = {...listValue, [valueName]: product_is_in_stock}}
+        , {})
 
-        return listValue = [...listValue, {  availble:product_is_in_stock, value: variation_name[variationKey] }]}
-        , [])
-
-        console.log(listchildProduct)
-    return  { variationKey:variationKey,valueList:listchildProduct};
+       
+    return  {[variationKey]:listchildProduct};
 
   }
 
@@ -56,4 +63,15 @@ export function getFirstChildAvaible(children){
     return child.product_is_in_stock
 
   })[0];
+}
+
+export function getVariationAvailableValue(variationSelected,children){
+return Object
+  .keys(variationSelected)
+  .reduce( (acc, current) => {
+      
+      const listValueAvaible = getListVariationValueAvailble(variationSelected, current, children)
+   
+      return {...acc,...listValueAvaible}
+},{})
 }

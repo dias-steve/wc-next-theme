@@ -12,7 +12,7 @@ export const FilterBtn = ({category}) => {
   const {name, term_id} = category;
   const handleClick = async (e) => {
 
-    console.log('click: '+name)
+  
     if(!isCategorySelected(term_id,filter)){
       addCategorieInFilter(term_id,filter, dispatch);
     }else{

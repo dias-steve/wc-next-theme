@@ -17,7 +17,7 @@ export default function ProductFilterPrice({min, max, step}) {
    const dispatch = useDispatch();
    const [delayIsUp , setDelayIsUp] = useState(0)
 
-   console.log(filter)
+
 
  
 

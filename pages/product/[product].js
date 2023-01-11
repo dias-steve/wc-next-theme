@@ -20,14 +20,17 @@ export default function Product(props) {
 
 
    const {title, price} = singleProduct.product_parent
-   const {name, product_is_in_stock} = singleProduct.product_selected
-   
+   const {name, product_is_in_stock, id} = singleProduct.product_selected
+
+  
+
+  
 
   
   return (
     <div>
     
-      {title}-{name}-{product_is_in_stock ? "dispo": "non dispo"}
+      {title}-{name}-{product_is_in_stock ? "dispo": "non dispo"}-{id}
       <OptionVariableSelector />
     
     </div>

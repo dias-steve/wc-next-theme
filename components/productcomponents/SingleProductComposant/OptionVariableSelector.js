@@ -9,21 +9,21 @@ const mapState = (state) =>({
     singleProduct: state.singleproduct
 })
 
-const BtnValue = ({data} ) => {
+const BtnValue = ({name, variation_key}) => {
 
   const {singleProduct } = useSelector(mapState);
-  const {variations_selected} = singleProduct;
+  const {variations_selected,variations_stock_status} = singleProduct;
 
 
-  const {name, termes_stock_status, variation_key,} = data
+  
   const isSelected = variations_selected?.[variation_key] === name
-  const isAvailable = termes_stock_status[name];
+  const isAvailable = variations_stock_status?.[variation_key]?.[name]
 
   const dispatch = useDispatch()
 
   const handleclick = () => {
     if(isAvailable){
-      dispatch(setVariationSelectedStart({...variations_selected, [variation_key]: name}))
+      dispatch(setVariationSelectedStart({[variation_key]: name}))
     }
   }
 
@@ -36,13 +36,13 @@ const BtnValue = ({data} ) => {
   >{name}</button>)
 }
 const SingleVariation = ({variation}) => {
-  const {variation_name, variation_key,termes:{termes_names, termes_stock_status} } = variation
+  const {variation_name, variation_key,termes:{termes_names} } = variation
   return (
   <div>
     <span>{variation_name}- {variation_key}</span>
   
   <div>
-    {termes_names.map((name) => (<BtnValue key={ uuidv4()} data={{name: name, variation_key, termes_stock_status }} />))}
+    {termes_names.map((name) => (<BtnValue key={ uuidv4()} name={name} variation_key={variation_key}  />))}
   </div>
   </div>
   )
@@ -50,7 +50,7 @@ const SingleVariation = ({variation}) => {
 }
 export default function OptionVariableSelector() {
   const {singleProduct } = useSelector(mapState);
-  const {variations_selected,variation_key, list_variations, product_parent:{children}} = singleProduct;
+  const { list_variations} = singleProduct;
 
 
   return (

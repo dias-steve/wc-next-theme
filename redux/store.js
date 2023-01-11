@@ -17,7 +17,7 @@ import rootSaga from './rootSaga';
 const sagaMiddleware = createSagaMiddleware();
 
 // middleware
-const middleware = [thunk, logger ,sagaMiddleware];
+const middleware = [thunk ,sagaMiddleware];//loger
 // creating store
 export let store = createStore(
   rootReducer,
