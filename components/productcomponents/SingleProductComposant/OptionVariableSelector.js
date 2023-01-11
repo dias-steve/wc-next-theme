@@ -12,12 +12,14 @@ const mapState = (state) =>({
 const BtnValue = ({name, variation_key}) => {
 
   const {singleProduct } = useSelector(mapState);
-  const {variations_selected,variations_stock_status} = singleProduct;
+  const {variations_selected,variations_stock_status,  variation_list_detail} = singleProduct;
 
 
   
   const isSelected = variations_selected?.[variation_key] === name
   const isAvailable = variations_stock_status?.[variation_key]?.[name]
+  const label =  variation_list_detail?.[variation_key]?.[name]?.['name'] ||name
+  const thumnail = variation_list_detail?.[variation_key]?.[name]?.thumnail || false
 
   const dispatch = useDispatch()
 
@@ -28,12 +30,12 @@ const BtnValue = ({name, variation_key}) => {
   }
 
   return (
-  <button className={[styles.option_btn, isSelected ? styles.selected: '' , isAvailable ? '' : styles.option_not_available].join(" ")}
+  <button className={[styles.option_btn, isSelected ? styles.selected: '' , isAvailable ? '' : styles.option_not_available, thumnail ? styles.with_thumnail : ''].join(" ")}
     onClick={(e) =>{
       e.preventDefault();
       handleclick();
     }}
-  >{name}</button>)
+  >{label}</button>)
 }
 const SingleVariation = ({variation}) => {
   const {variation_name, variation_key,termes:{termes_names} } = variation

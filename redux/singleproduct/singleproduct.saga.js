@@ -1,6 +1,6 @@
 import { takeLatest, put, all, call, select} from 'redux-saga/effects';
 
-import { setListVariations, setProductParent, setSelectedProduct, setVariationSelected, setVariationStockStatus, singleProductTypes } from './singleproduct.reducer';
+import { setListVariations, setProductParent, setSelectedProduct, setVariationListDetailed, setVariationSelected, setVariationStockStatus, singleProductTypes } from './singleproduct.reducer';
 import { getChildBySelector, getFirstChildAvaible, getListVariationValueAvailble, getVariationAvailableValue } from '../../utils/Product/VariationSelector/ProductVariationSelector.utils';
 
 export const getSingleProduct = (state) => state.singleproduct
@@ -8,10 +8,11 @@ export const getSingleProduct = (state) => state.singleproduct
 
 export function* setSingleProductDataToStore({payload}){
 
-        const {list_variations} = payload
+        const {list_variations,variation_list_detail} = payload
         yield put(
             setProductParent(payload)
         )
+        yield put(setVariationListDetailed( variation_list_detail))
         yield put(
             setListVariations(list_variations)
         )
@@ -103,7 +104,7 @@ export function* onSetVariation(){
 
 
 
-export default function* singleProductSagas(){
+export default function* singleProductSaga(){
     yield all([
         call(onSetVariation),
         call(onSetParentProductStart)

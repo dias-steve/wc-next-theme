@@ -30,7 +30,7 @@ export function* onFetchProductListStart(){
     yield takeLatest(productListTypes.FETCH_PRODUCT_LIST_START, fetchProductList)
 }
 
-export default function* postsSagas(){
+export default function* ProductSaga(){
     yield all([
         call(onFetchProductListStart)
     ])

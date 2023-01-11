@@ -28,8 +28,10 @@ const INITIAL_STATE = {
       children: [],
       list_variations: [],
       variations_selected: null,
+     
     },
 
+    variation_list_detail:{},
     list_variations: [],
     variations_selected: {},
     variations_stock_status: {}
@@ -48,7 +50,8 @@ export const singleProductTypes = {
   SET_VARIATION_SELECTED:"SET_VARIATION_SELECTED",
   ON_SET_PRODUCT_PARENT_START:"ON_SET_PRODUCT_PARENT_START",
   SET_LIST_VARIATION_SELECTED_START:"ON_SET_LIST_VARIATION_SELECTE_START",
-  SET_VARIATION_STOCK_STATUS:"SET_VARIATION_STOCK_STATUS"
+  SET_VARIATION_STOCK_STATUS:"SET_VARIATION_STOCK_STATUS",
+  SET_VARIATION_LIST_DETAIL: "SET_VARIATION_LIST_DETAIL"
 };
 
 /*----------  End Types  ----------*/
@@ -91,6 +94,11 @@ export const setVariationStockStatus = (variations_stock_status) => ({
   type: singleProductTypes.SET_VARIATION_STOCK_STATUS,
   payload: variations_stock_status
 })
+
+export const setVariationListDetailed = (variations_list_detail) =>({
+  type: singleProductTypes.SET_VARIATION_LIST_DETAIL,
+  payload: variations_list_detail
+})
 /*----------  End Types  ----------*/
 
 
@@ -111,6 +119,9 @@ const singleProductReducer = (state=INITIAL_STATE, action) => {
     
     case singleProductTypes.SET_VARIATION_STOCK_STATUS:
       return {...state, variations_stock_status: action.payload}
+    
+    case singleProductTypes.SET_VARIATION_LIST_DETAIL:
+      return{...state, variation_list_detail: action.payload}
     default:
       return state;
   }

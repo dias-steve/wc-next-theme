@@ -9,6 +9,10 @@
     }
 
     &.selected{
-        background-color: blue;
+        background-color: blue !important;
+    }
+
+    &.with_thumnail{
+        background-color: green;
     }
 }
