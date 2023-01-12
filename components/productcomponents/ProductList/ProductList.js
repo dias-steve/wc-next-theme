@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './ProductList.module.scss';
 import ProductCard from '../ProductCard/ProductCard';
-import { ProductListContainer } from './fonctionalcomponent/FonctionalComponant';
+import { ProductListContainer, withContainer } from './fonctionalcomponent/FonctionalComponant';
 
 
 
@@ -29,15 +29,5 @@ export function LoadingProductListView () {
   return <span>is loading....</span>
 }
 
-/**
- * Global Component
- * @returns 
- */
-export default function ProductList() {
-  return <ProductListContainer 
-    WrapperViewComponent ={ListProductWrapperView}
-    LoadingViewComponent = {LoadingProductListView}
-    ProductCardViewComponent ={ProductCard}
-  />
-}
+export default withContainer(ListProductWrapperView, LoadingProductListView, ProductCard)
 

@@ -2,7 +2,7 @@ import React, { Children, useEffect, useState } from "react";
 
 import styles from "./OptionVariableSelector.module.scss";
 
-import { OptionVariableSelectorContainer } from "./fonctionalComponents/FonctionalComponents";
+import {withContainer } from "./fonctionalComponents/FonctionalComponents";
 
 /*==========================================================================
 =             PRESENTATIONAL COMPONENT  For Option VariableSelector        =
@@ -84,18 +84,6 @@ export function OptionVariableSelectorView(props) {
   );
 }
 
-/**
- * Global Presentationnal
- *
- * */
 
-export default function OptionVariableSelector() {
-  return <OptionVariableSelectorContainer
-      WrapperViewContainer = {OptionVariableSelectorView}
-      VariationsListWrapperView = {SingleVariationListOptionView}
-      VariationItem = {BtnOption}
-      VariationItemThumnail = {BtnOptionThumnail}
-      />
-  
-  ;
-}
+
+export default withContainer(OptionVariableSelectorView,SingleVariationListOptionView,BtnOption,BtnOptionThumnail)

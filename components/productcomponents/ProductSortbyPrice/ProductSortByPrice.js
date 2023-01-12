@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './ProductSortbyPrice.module.scss';
 
-import { ProductSortByPriceContainer } from './fonctioncomoponents/FonctionalCompoents';
+import { withContainer } from './fonctioncomoponents/FonctionalCompoents';
 
 
 /*===================================================================
@@ -40,14 +40,6 @@ export function WrapperViewSortWrapper({children}) {
 }
 
 
-/**
- * Component global 
- * @param {*} param0 
- * @returns 
- */
-export default function ProductSortByPrice(){
-    return <ProductSortByPriceContainer 
-    WrapperView = {WrapperViewSortWrapper}
-    BtnView = {Btn}
-    />
-}
+
+
+export default withContainer(WrapperViewSortWrapper, Btn)

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './ProductFilter.module.scss';
-import {  ProductCategorieFilterContainer } from './fonctioncomponents/FonctionalComponents';
+import {  ProductCategorieFilterContainer, withContainer } from './fonctioncomponents/FonctionalComponents';
 
 
 /*=============================================
@@ -37,13 +37,4 @@ export function ViewFilterBtnContainerView ({children: CategorieList})  {
   )
 }
 
-
-
-
-export default function ProductCategorieFilter({categorieData}) {
-  return <ProductCategorieFilterContainer
-    WrapperViewComponant={ViewFilterBtnContainerView}
-    BtnViewComponent={BtnOptionCategory}
-    categorieData={categorieData}
-    />
-}
+export default withContainer(ViewFilterBtnContainerView,BtnOptionCategory)

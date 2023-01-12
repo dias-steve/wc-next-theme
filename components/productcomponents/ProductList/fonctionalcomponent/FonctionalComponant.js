@@ -20,30 +20,29 @@ const mapState = (state) => ({
 =            FONCTIONAL CONTAINER COMPONENT PRODUCT LIST       =
 ====================================================================*/
 
-/**
- * Global container
- * @param {*} param0 
- * @returns 
- */
-export function ProductListContainer({ WrapperViewComponent , LoadingViewComponent, ProductCardViewComponent }) {
-  const {productList, isLoading, filter} = useSelector(mapState);
-  const dispatch = useDispatch();
 
-  useEffect(
-    () => {
-      //abort the fetching if we left the component
-      const controller = new AbortController();
-      dispatch(
-        fetchProductListStart(filter)
-      )
-      return () => {
-        controller.abort()
-      }
-    },
-  [filter])
-  return (  
-    <WrapperViewComponent >
-      { isLoading ? < LoadingViewComponent/>  : productList.map((product) => <ProductCardViewComponent  key={uuidv4()} content={product}/> )}
-      </ WrapperViewComponent >
-  );
+
+export function withContainer(WrapperViewComponent , LoadingViewComponent, ProductCardViewComponent) {
+  return function Container() {
+    const {productList, isLoading, filter} = useSelector(mapState);
+    const dispatch = useDispatch();
+  
+    useEffect(
+      () => {
+        //abort the fetching if we left the component
+        const controller = new AbortController();
+        dispatch(
+          fetchProductListStart(filter)
+        )
+        return () => {
+          controller.abort()
+        }
+      },
+    [filter])
+    return (  
+      <WrapperViewComponent >
+        { isLoading ? < LoadingViewComponent/>  : productList.map((product) => <ProductCardViewComponent  key={uuidv4()} content={product}/> )}
+        </ WrapperViewComponent >
+    );
+  }
 }
