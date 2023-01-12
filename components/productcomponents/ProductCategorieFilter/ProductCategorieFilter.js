@@ -5,11 +5,26 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from './ProductFilter.module.scss';
 
 
+/*=============================================
+=           PRESENTATIONAL COMPONENT         =
+=============================================*/
+function BtnOptionCategory({checked, label, handleClick}){
+  return (
+    <div  onClick={e => {handleClick(e)} } className={[styles.container_btn, checked ? styles.isActive : ""].join(" ")}>
+      <span dangerouslySetInnerHTML={{__html:label}}   />
+    </div>
+  )
+}
 
-export const FilterBtn = ({category}) => {
+/*=============================================
+=            CONTAINER COMPONENT          =
+=============================================*/
+
+export const FilterBtnContainer = ({category}) => {
   const dispatch = useDispatch();
   const {filter} = useSelector(mapState);
   const {name, term_id} = category;
+ const checked = isCategorySelected(term_id,filter)
   const handleClick = async (e) => {
 
   
@@ -18,16 +33,14 @@ export const FilterBtn = ({category}) => {
     }else{
       removeCategorieInFilter(term_id,filter, dispatch);
     }
-
-    
   }
 
 
-  return <div  onClick={e => {handleClick(e)} } className={[styles.container_btn,isCategorySelected(term_id,filter) ? styles.isActive : ""].join(" ")}
-  
-  >
-    <span dangerouslySetInnerHTML={{__html:name}}   />
-  </div>
+  return <BtnOptionCategory 
+            handleClick={handleClick}
+            label={name}
+            checked= {checked}
+          />
 }
 
 
@@ -35,14 +48,15 @@ export const FilterBtn = ({category}) => {
 const mapState = (state) => ({
   filter: state.productlist.filter,
 })
+
 export default function ProductCategorieFilter({categorieData}) {
   const {categorie_flat} = categorieData;
 
 
 
   return (
-    <div>{categorie_flat.map((category) => {
-      return <FilterBtn key={uuidv4()} category={category}/>;
-    })}</div>
+    <>{categorie_flat.map((category) => {
+      return <FilterBtnContainer key={uuidv4()} category={category}/>;
+    })}</>
   )
 }

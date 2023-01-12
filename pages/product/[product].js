@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styles from './Product.module.scss';
 import {useSelector, useDispatch} from 'react-redux';
 import { setParentProduct, setParentProductStart } from '../../redux/singleproduct/singleproduct.reducer';
-import OptionVariableSelector from '../../components/productcomponents/SingleProductComposant/OptionVariableSelector';
+import OptionVariableSelector from '../../components/productcomponents/SingleProductComposant/OptionVariationSelector/OptionVariableSelector';
 
 
 const mapState = (state) => ({

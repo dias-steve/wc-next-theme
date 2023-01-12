@@ -12,7 +12,17 @@ const mapState = (state) => ({
   isLoading: state.productlist.is_loading
   
 })
-export default function ProductList() {
+
+export const ProductList = ({productList, isLoading}) => (
+  <div className={styles.global_container}>
+  <div className={styles.grid} >
+    { isLoading ? '...loading' : productList.map((product) => <ProductCard key={uuidv4()} content={product}/> )}
+    
+    </div>
+  </div>
+)
+
+export default function ProductListContainer() {
   const {productList, isLoading, filter} = useSelector(mapState);
   const dispatch = useDispatch();
 
@@ -30,13 +40,6 @@ export default function ProductList() {
 
 
   [filter])
-  return (
-    <div className={styles.global_container}>
-    <div className={styles.grid} >
-      { isLoading ? '...loading' : productList.map((product) => <ProductCard key={uuidv4()} content={product}/> )}
-      
-      </div>
-    </div>
-
-  )
+  return <ProductList productList ={productList} isLoading={isLoading} />;
 }
+
