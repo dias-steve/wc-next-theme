@@ -1,45 +1,43 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from './ProductList.module.scss';
-import { useDispatch, useSelector } from "react-redux";
 import ProductCard from '../ProductCard/ProductCard';
-import { v4 as uuidv4 } from 'uuid';
-import { fetchProductListStart } from '../../../redux/productList/productList.action';
+import { ProductListContainer } from './fonctionalcomponent/FonctionalComponant';
 
 
-const mapState = (state) => ({
-  productList: state.productlist.product_list,
-  filter : state.productlist.filter,
-  isLoading: state.productlist.is_loading
-  
-})
 
-export const ProductList = ({productList, isLoading}) => (
-  <div className={styles.global_container}>
-  <div className={styles.grid} >
-    { isLoading ? '...loading' : productList.map((product) => <ProductCard key={uuidv4()} content={product}/> )}
-    
+/*===================================================================
+=            VIEW COMPONENT PRODUCT LIST       =
+====================================================================*/
+
+/**
+ * Component that displays list of product
+ * @param {*} param0 
+ * @returns 
+ */
+export function ListProductWrapperView ({children: Productlist}) {
+  return (<div className={styles.global_container}>
+    <div className={styles.grid} >
+    {Productlist}
     </div>
-  </div>
-)
+  </div>)
+}
+/**
+ * Componant show when product is loading
+ * @returns 
+ */
+export function LoadingProductListView () {
+  return <span>is loading....</span>
+}
 
-export default function ProductListContainer() {
-  const {productList, isLoading, filter} = useSelector(mapState);
-  const dispatch = useDispatch();
-
-  useEffect(
-    () => {
-      //abort the fetching if we left the component
-      const controller = new AbortController();
-      dispatch(
-        fetchProductListStart(filter)
-      )
-      return () => {
-        controller.abort()
-      }
-    },
-
-
-  [filter])
-  return <ProductList productList ={productList} isLoading={isLoading} />;
+/**
+ * Global Component
+ * @returns 
+ */
+export default function ProductList() {
+  return <ProductListContainer 
+    WrapperViewComponent ={ListProductWrapperView}
+    LoadingViewComponent = {LoadingProductListView}
+    ProductCardViewComponent ={ProductCard}
+  />
 }
 

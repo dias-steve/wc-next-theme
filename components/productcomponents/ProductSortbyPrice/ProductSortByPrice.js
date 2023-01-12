@@ -1,69 +1,53 @@
-import React, {useEffect, useState} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setFilter } from '../../../redux/productList/productList.action';
+import React from 'react';
 import styles from './ProductSortbyPrice.module.scss';
 
+import { ProductSortByPriceContainer } from './fonctioncomoponents/FonctionalCompoents';
 
 
-const mapSate = (state) => ({
-    filter: state.productlist.filter
-})
+/*===================================================================
+=            VIEW COMPONENT PRODUCT SORT PRICE     =
+====================================================================*/
 
-export default function ProductSortByPrice() {
+/**
+ * Component that display button for options
+ * @param {*} param0 
+ * @returns 
+ */
 
-    const [btnASCActive, setBtnASCActive] = useState('unactive');
-    const dispatch = useDispatch();
-    const {filter} = useSelector(mapSate);
-
-    const conevertStateToFilterSortValue = (btnState) => {
-        switch(btnState) {
-            case 'unactive':
-                return null;
-            case 'asc':
-                return '_price';
-            case 'desc':
-                return '-_price';
-        }
-    }
-    useEffect(() => {
-        dispatch(
-            setFilter({...filter, sort: conevertStateToFilterSortValue(btnASCActive) })
-        )
-
-    }, [btnASCActive])
+export function Btn ({label, checked, handleClick}) {
+    return( <button 
+        className={[styles.btn, checked? styles.btn_active : ''].join(" ")}
+        onClick={e => {
+            e.preventDefault();
+            handleClick();
+        }}
+    >
+        {label}
+    </button>)
+}
 
 
-    
+/**
+ * Component that display button option list wrapper
+ * @param {*} param0 
+ * @returns 
+ */
+export function WrapperViewSortWrapper({children}) {
+    return(<div>
+        price
+        {children}
+    </div>)
+}
 
-    return <div>
-        <button 
-            className={[styles.btn, btnASCActive === 'asc'? styles.btn_active : ''].join(" ")}
-            onClick={e => {
-                e.preventDefault();
-                if(btnASCActive === 'asc'){
-                    setBtnASCActive('unactive');
-                }else{
-                    setBtnASCActive('asc');
-                }
-           
-            }}
-        >
-            prix ascendant
-        </button>
-        <button 
-            className={[styles.btn, btnASCActive === 'desc' ? styles.btn_active : ''].join(" ")}
 
-            onClick={e => {
-                e.preventDefault();
-                if(btnASCActive === 'desc'){
-                    setBtnASCActive('unactive');
-                }else{
-                    setBtnASCActive('desc');
-                }
-            }}
-            >
-                prix descendant
-        </button>
-
-    </div>
+/**
+ * Component global 
+ * @param {*} param0 
+ * @returns 
+ */
+export default function ProductSortByPrice(){
+    return <ProductSortByPriceContainer 
+    WrapperView = {WrapperViewSortWrapper}
+    BtnView = {Btn}
+    />
 }

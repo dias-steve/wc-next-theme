@@ -90,9 +90,12 @@ export function OptionVariableSelectorView(props) {
  * */
 
 export default function OptionVariableSelector() {
-  return (
-    <OptionVariableSelectorView>
-      <OptionVariableSelectorContainer />
-    </OptionVariableSelectorView>
-  );
+  return <OptionVariableSelectorContainer
+      WrapperViewContainer = {OptionVariableSelectorView}
+      VariationsListWrapperView = {SingleVariationListOptionView}
+      VariationItem = {BtnOption}
+      VariationItemThumnail = {BtnOptionThumnail}
+      />
+  
+  ;
 }
