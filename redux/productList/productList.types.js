@@ -1,9 +1,0 @@
-const productListTypes = {
-    SET_FILTER: 'SET_FILTER',
-    SET_PRODUCT_LIST: 'SET_PRODUCT_LIST',
-    SET_IS_LOADING: 'SET_IS_LOADING',
-    SET_PAGINATION: 'SET_PAGINATION',
-    FETCH_PRODUCT_LIST_START: 'FETCH_PRODUCT_LIST_START',
-}
-
-export default productListTypes;

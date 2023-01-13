@@ -1,9 +1,8 @@
 import React from "react";
 import {
-  addCategorieInFilter,
   isCategorySelected,
-  removeCategorieInFilter,
-} from "../../../../utils/Product/product_filter/productFilter.utils";
+} from "../../../../utils/Product/productFilter/productFilter.utils";
+import { addCategoryToFilter, removeCategoryToFilter } from "../../../../redux/productList/productList.reducer"
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 
@@ -32,9 +31,13 @@ export function withContainer(WrapperViewComponant, BtnViewComponent) {
     const checked = isCategorySelected(term_id, filter);
     const handleClick = async (e) => {
       if (!isCategorySelected(term_id, filter)) {
-        addCategorieInFilter(term_id, filter, dispatch);
+        dispatch(
+         addCategoryToFilter(term_id)
+        )
       } else {
-        removeCategorieInFilter(term_id, filter, dispatch);
+        dispatch(
+          removeCategoryToFilter(term_id)
+         )
       }
     };
 

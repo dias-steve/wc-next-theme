@@ -1,12 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setFilter } from '../../../../redux/productList/productList.action';
-
-
-
-const mapSate = (state) => ({
-    filter: state.productlist.filter
-})
+import { useDispatch } from 'react-redux';
+import { setSortFilterAction } from '../../../../redux/productList/productList.reducer';
 
 /*===================================================================
 =            FONCTIONAL CONTAINER COMPONENT PRODUCT SORT PRICE     =
@@ -18,29 +12,26 @@ const mapSate = (state) => ({
  * @returns 
  */
 
-
-
 export const  withContainer = (WrapperView, BtnView) => {
     return (function Container () {
         const [btnASCActive, setBtnASCActive] = useState('unactive');
         const dispatch = useDispatch();
-        const {filter} = useSelector(mapSate);
+      
     
         const conevertStateToFilterSortValue = (btnState) => {
             switch(btnState) {
                 case 'unactive':
                     return null;
                 case 'asc':
-                    return '_price';
+                    return true;
                 case 'desc':
-                    return '-_price';
+                    return false;
             }
         }
         useEffect(() => {
             dispatch(
-                setFilter({...filter, sort: conevertStateToFilterSortValue(btnASCActive)})
+                setSortFilterAction({key: 'price',isASC: conevertStateToFilterSortValue(btnASCActive)})
             )
-    
         }, [btnASCActive])
     
        const handleClick = (value) => {

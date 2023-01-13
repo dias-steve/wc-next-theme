@@ -1,4 +1,4 @@
-import { setFilter } from "../../../redux/productList/productList.action";
+import { setFilter } from "../../../redux/productList/productList.reducer";
 
 export const addCategorieInFilter = (idCategory, currentFilter, dispatch) => {
   const newFilter = addItemInTaxinomieFilter(
@@ -252,4 +252,15 @@ export const getRemoveNumericalFilterInFilter = (key, operator, initialFilter) =
 }
 
 
-
+export function convertSortValueStringQuery(keyValue, isASC){
+  switch(isASC){
+    case true:
+      return keyValue;
+    case false:
+      return '-'+keyValue;
+    case null:
+      return ''
+    default:
+      return '';
+  }
+}

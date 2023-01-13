@@ -10,13 +10,20 @@ import styles from '../styles/Home.module.scss'
 
 
 import ProductFilter from '../components/product/ProductFilter';
+import { fetchProductListStart } from '../redux/productList/productList.reducer';
 
 export default function Home({data}) {
 
   const dispatch = useDispatch();
 
 
-
+  useEffect(
+    () => {
+      dispatch(
+        fetchProductListStart("")
+      )
+    },
+  [])
 
 
 

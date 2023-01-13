@@ -1,5 +1,5 @@
-import { INITIAL_CHILDREN_LIST } from "./intialChildrenList"
-import {getChildBySelector, getListVariationValueAvailble} from '../ProductVariationSelector.utils'
+import { INITIAL_CHILDREN_LIST } from "./_intialChildrenList"
+import {getChildBySelector, getListVariationValueAvailble} from '../../utils/Product/productOptionVairationSelector/productVariationSelector.utils'
 
 
 describe('Get Child product by selector', () => {
