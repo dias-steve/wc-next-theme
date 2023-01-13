@@ -1,4 +1,4 @@
-export const addProductToCard = (productToAdd, productList) => {
+export const addProductToCart = (productToAdd, productList) => {
     let productAddedStatus = false;
     const newProductList = productList.map(itemProduct => {
     
@@ -17,7 +17,7 @@ export const addProductToCard = (productToAdd, productList) => {
     }
 }
 
-export const removeProductToCard = (productToRemove, productList) => {
+export const removeProductToCart = (productToRemove, productList) => {
     let productRemovedStatus = false;
 
     const newProductList = productList.reduce((newItemList, currentItemProduct) => {
@@ -44,10 +44,33 @@ export const removeProductToCard = (productToRemove, productList) => {
 }
 
 export const getTotalPrice = (productList) => {
-
+    if(Array.isArray(productList)){
+        return productList.reduce((total, product) => {
+            const {price} = product;
+            return total + Number(price)
+        }, 0)
+    }
+    return 0;
+  
 }
 
 export const getTotalQuatity = (productList) => {
-    
+    if(Array.isArray(productList)){
+        return productList.reduce((total, product) => {
+            const {quantity} = product;
+            return total + Number(quantity)
+        }, 0)
+    }
+    return 0;
+}
+
+export const isInCart = (product , productList) => {
+
+     const result = productList.filter(productCart => {
+        const {id} = productCart
+        return product.id === id;
+    })
+
+    return result.length > 0 ? true : false;
 }
 

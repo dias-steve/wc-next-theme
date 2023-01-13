@@ -3,7 +3,6 @@ import { takeLatest, put, all, call, select } from "redux-saga/effects";
 import {
   setListVariations,
   setProductParent,
-  setProductiSValidAction,
   setSelectedProduct,
   setVariationListDetailed,
   setVariationSelected,

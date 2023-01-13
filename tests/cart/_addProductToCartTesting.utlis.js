@@ -1,4 +1,4 @@
-import { addProductToCard, removeProductToCard } from "../../utils/product/cart/cart.utils";
+import { addProductToCart } from "../../utils/product/cart/cart.utils";
 
 const INITIAL_LIST_PRODUCT = [
   {
@@ -37,7 +37,7 @@ export const addProductToCartTestings = () => {
       quantity: 1,
       sold_individualy: false,
     };
-    const newlist = addProductToCard(product, INITIAL_LIST_PRODUCT);
+    const newlist = addProductToCart(product, INITIAL_LIST_PRODUCT);
 
     expect(newlist).toStrictEqual([
       {
@@ -79,7 +79,7 @@ export const addProductToCartTestings = () => {
       quantity: 1,
       sold_individualy: false,
     };
-    const newlist = addProductToCard(product, INITIAL_LIST_PRODUCT);
+    const newlist = addProductToCart(product, INITIAL_LIST_PRODUCT);
 
     expect(newlist).toStrictEqual([
       {
@@ -113,7 +113,7 @@ export const addProductToCartTestings = () => {
       quantity: 1,
       sold_individualy: true,
     };
-    const newlist = addProductToCard(product, INITIAL_LIST_PRODUCT);
+    const newlist = addProductToCart(product, INITIAL_LIST_PRODUCT);
 
     expect(newlist).toStrictEqual([
       {

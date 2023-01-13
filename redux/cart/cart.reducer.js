@@ -32,33 +32,33 @@ export const cartTypes = {
 =            ACTIONS            =
 =============================================*/
 
-export const setProductList = (productlist) => ({
+export const setProductListAction = (productlist) => ({
     type: cartTypes.SET_PRODUCT_LIST,
     payload: productlist
 })
 
-export const setTotalAmount = (total) => ({
+export const setTotalAmountAction = (total) => ({
     type: cartTypes.SET_TOTAL_AMOUNT,
     payload: total
 })
 
-export const setTotalQuantity= (total) => ({
+export const setTotalQuantityAction = (total) => ({
     type: cartTypes.SET_TOTAL_QUANTITY,
     payload: total
 })
 
-export const addProductToCart= (product) => ({
+export const addProductToCartAction = (product) => ({
     type: cartTypes.ADD_PRODUCT_TO_CART,
     payload: product
 })
 
-export const removeProductToCart = (id) => ({
+export const removeProductToCartAction = (product) => ({
     type: cartTypes.REMOVE_PRODUCT_TO_CART,
-    payload: id
+    payload: product
 })
 
 /*=============================================
-=            REDUCER            =
+=            REDUCER                         =
 =============================================*/
 
 const cartReducer = (state=INITIAL_STATE , action) =>{

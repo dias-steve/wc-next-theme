@@ -41,6 +41,7 @@ export default function Product(props) {
     {!product_is_valid &&
       <p> product not valid </p>
     }
+    <SingleProduct.AddToCardBtn/>
     </div>
   )
 }
