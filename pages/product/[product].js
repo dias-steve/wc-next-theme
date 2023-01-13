@@ -9,6 +9,7 @@ const mapState = (state) => ({
   singleProduct: state.singleproduct
 });
 
+
 export default function Product(props) {
     const {singleProduct} = useSelector(mapState);
     const {data:parentproduct} = props.product
@@ -16,10 +17,11 @@ export default function Product(props) {
     useEffect(()=> {
       dispatch(setParentProductStart(parentproduct));
     },[ ])
+    console.log(  props.product)
 
 
-
-   const {title, price} = singleProduct.product_parent
+   const {title, price, product_is_variable} = singleProduct.product_parent
+   const {product_is_valid} = singleProduct;
    const {name, product_is_in_stock, id} = singleProduct.product_selected
 
   
@@ -32,8 +34,13 @@ export default function Product(props) {
     
       {title}-{name}-{product_is_in_stock ? "dispo": "non dispo"}-{id}
   
-      <SingleProduct.OptionVariableSelector />
+
+     { product_is_variable && product_is_valid &&
+      <SingleProduct.OptionVariableSelector />}
     
+    {!product_is_valid &&
+      <p> product not valid </p>
+    }
     </div>
   )
 }

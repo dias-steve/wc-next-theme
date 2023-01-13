@@ -40,7 +40,7 @@ export function withContainer(
 
     const handleClick = (e) => {
       e.preventDefault();
-      if (isAvailable) {
+      if (true){//isAvailable){//) {
         dispatch(setVariationSelectedStart({ [variation_key]: name }));
       }
     };

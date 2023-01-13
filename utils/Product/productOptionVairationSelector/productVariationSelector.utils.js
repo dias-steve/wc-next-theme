@@ -1,4 +1,4 @@
-import RenderResult from "next/dist/server/render-result";
+
 
 export function getChildBySelector(
     variationsSelected,
@@ -12,10 +12,10 @@ export function getChildBySelector(
       );
     }
 
-    if(good.length === 1){
-      return { ...good[0], cleanResult: good.length === 1 ? true : false };
+    if(Array.isArray(good) && good.length >= 1){
+      return good
     }else{
-      return good;
+      return [];
     }
 
   }
@@ -29,6 +29,7 @@ export function getChildBySelector(
 
   export function  getListVariationValueAvailble( variationsSelected, variationKey, childrensProductList){
 
+   
     const variableSelectedfilter = Object.entries(variationsSelected).reduce((acc, current)=> {
       const [key, value] = current
       if(key !== variationKey){
@@ -38,6 +39,7 @@ export function getChildBySelector(
     }, {})
 
  
+   
     const listchildProduct = getChildBySelector( variableSelectedfilter , childrensProductList)
       .reduce((listValue, child )=> {
         const {variation_name, product_is_in_stock} = child;``
@@ -53,10 +55,6 @@ export function getChildBySelector(
 
 
 
-export function  AddVariationSelectedToList  ( variation ,variationsSelectedList ) {
-
-
-}
 
 export function getFirstChildAvaible(children){
   return children.filter (child => {

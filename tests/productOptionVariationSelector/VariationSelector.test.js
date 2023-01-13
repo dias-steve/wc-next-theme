@@ -16,7 +16,7 @@ describe('Get Child product by selector', () => {
 
 
         expect(child).toStrictEqual(
-            {
+            [{
                 "id": 274,
                 "name": "produit variable - Large, Yellow",
                 "price": "5",
@@ -35,8 +35,8 @@ describe('Get Child product by selector', () => {
                     "alt": "alt_parent"
                 },
                 "product_is_in_stock": true,
-                "cleanResult": true,
-            }
+             
+    }]
         )
     })
 

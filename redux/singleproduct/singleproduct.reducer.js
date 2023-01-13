@@ -31,6 +31,8 @@ const INITIAL_STATE = {
   list_variations: [],
   variations_selected: {},
   variations_stock_status: {},
+
+  product_is_valid: true,
 };
 
 /*=============================================
@@ -46,6 +48,7 @@ export const singleProductTypes = {
   SET_LIST_VARIATION_SELECTED_START: "ON_SET_LIST_VARIATION_SELECTE_START",
   SET_VARIATION_STOCK_STATUS: "SET_VARIATION_STOCK_STATUS",
   SET_VARIATION_LIST_DETAIL: "SET_VARIATION_LIST_DETAIL",
+  SET_PRODUCT_IS_VALID: "SET_PRODUCT_IS_VALID",
 };
 
 /*----------  End Types  ----------*/
@@ -93,6 +96,12 @@ export const setVariationListDetailed = (variations_list_detail) => ({
   type: singleProductTypes.SET_VARIATION_LIST_DETAIL,
   payload: variations_list_detail,
 });
+
+export const setProductiSValidAction = (isValid) => ({
+  type: singleProductTypes.SET_PRODUCT_IS_VALID,
+  payload: isValid
+
+})
 /*----------  End Types  ----------*/
 
 /*=============================================
@@ -114,6 +123,9 @@ const singleProductReducer = (state = INITIAL_STATE, action) => {
 
     case singleProductTypes.SET_VARIATION_LIST_DETAIL:
       return { ...state, variation_list_detail: action.payload };
+
+    case singleProductTypes.SET_PRODUCT_IS_VALID:
+      return { ...state, product_is_valid: action.payload };
     default:
       return state;
   }
