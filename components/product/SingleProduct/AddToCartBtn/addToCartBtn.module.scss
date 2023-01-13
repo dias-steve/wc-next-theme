@@ -1,0 +1,13 @@
+.add_to_cart{
+    background-color: blueviolet;
+    width: 200px;
+    border: 1px solid;
+    &:hover{
+        background-color: crimson;
+    }
+
+    &.add_to_cart_not_avaible{
+        background-color: black;
+        color: gray;
+    }
+}

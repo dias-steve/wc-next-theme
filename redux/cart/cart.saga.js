@@ -11,6 +11,16 @@ export function* addProductToCartSideEffect({payload}){
     const { productlist } = state;
 
     const product = payload;
+
+    const productFormated = 
+        { 
+            id: product.id, 
+            price: product.price,
+            quantity: product.quantity,
+            shipping_cost_unit: 0,// product.shipping_cost_unit,
+            sold_individualy: product.sold_individualy
+
+        } // convert product
     const newlistProduct = addProductToCart(product, productlist)
 
     yield put(

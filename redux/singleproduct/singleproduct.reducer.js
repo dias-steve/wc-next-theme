@@ -17,6 +17,7 @@ const INITIAL_STATE = {
     regular_price: "",
     product_is_in_stock: null,
     shipping_cost_unit: null,
+    sold_individualy: false
   },
   product_parent: {
     title: "",

@@ -2,10 +2,12 @@ export const addProductToCart = (productToAdd, productList) => {
     let productAddedStatus = false;
     const newProductList = productList.map(itemProduct => {
     
-        if(itemProduct.id=== productToAdd.id && !productToAdd.sold_individualy){
+        if(itemProduct.id === productToAdd.id ){
             productAddedStatus = true;
+            if(!productToAdd.sold_individualy){
             const newQuantity = Number(itemProduct.quantity) + Number(productToAdd.quantity)
             return {...itemProduct, quantity: newQuantity }
+            }
         }
         return itemProduct;
     })

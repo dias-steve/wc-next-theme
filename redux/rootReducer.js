@@ -16,7 +16,7 @@ export const rootReducer = combineReducers({
 const configStorage = {
     key: 'root',
     storage,
-    blacklist: ['productlist', 'singleproduct'],
+    blacklist: ['productlist', 'singleproduct','cart'],// TODO: Remove cart to this list
 
 }
 
