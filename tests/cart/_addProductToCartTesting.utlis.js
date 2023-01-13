@@ -1,4 +1,4 @@
-import { addProductToCard, removeProductToCard } from "../../utils/Product/cart/cart.utils";
+import { addProductToCard, removeProductToCard } from "../../utils/product/cart/cart.utils";
 
 const INITIAL_LIST_PRODUCT = [
   {

@@ -1,4 +1,4 @@
-import { removeProductToCard } from "../../utils/Product/cart/cart.utils";
+import { removeProductToCard } from "../../utils/product/cart/cart.utils";
 
 const INITIAL_LIST_PRODUCT = [
   {

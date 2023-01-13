@@ -1,5 +1,5 @@
 import React from "react";
-import { isCategorySelected } from "../../../../utils/Product/productFilter/productFilter.utils";
+import { isCategorySelected } from "../../../../utils/product/productFilter/productFilter.utils";
 import {
   addCategoryToFilter,
   removeCategoryToFilter,

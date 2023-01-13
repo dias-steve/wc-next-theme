@@ -14,7 +14,7 @@ import {
   getChildBySelector,
   getFirstChildAvaible,
   getVariationAvailableValue,
-} from "../../utils/Product/productOptionVairationSelector/productVariationSelector.utils";
+} from "../../utils/product/productOptionVairationSelector/productVariationSelector.utils";
 
 export const getSingleProduct = (state) => state.singleproduct;
 
@@ -34,6 +34,7 @@ export function* setSingleProductDataToStore({ payload }) {
  
   let state = yield select(getSingleProduct);
 
+  const {product_parent} = state;
   const {
     product_parent: { children },
   } = state;
@@ -41,10 +42,11 @@ export function* setSingleProductDataToStore({ payload }) {
  
   const childSelected = product_is_variable ? 
     getFirstChildAvaible(children) :
-    payload
+    product_parent
   ;
 
-  if(childSelected ){
+ 
+
   const variationsSelectedArray =  product_is_variable ? getVariationAvailableValue(
     childSelected.variation_name,
     children
@@ -56,14 +58,7 @@ export function* setSingleProductDataToStore({ payload }) {
   yield put(setVariationSelected(childSelected.variation_name));
 
   yield put(setSelectedProduct(childSelected));
-  }else{
-    yield put(setSelectedProduct(payload));
-    if(payload.product_is_variable){
-      console.log('ok')
-     // yield put(setProductiSValidAction(false));
-    }
 
-  }
 }
 
 /**
@@ -83,35 +78,24 @@ export function* setVariationSelectedStart({ payload }) {
 
   const childSelected = getChildBySelector(newVariationSelected, children);
 
-  const oneChildSelected = Array.isArray(childSelected) && childSelected.length >=1 ? childSelected[0] : null;
-  if(oneChildSelected){
+  const oneChildSelected =  Array.isArray(childSelected) && childSelected.length >=1 ? childSelected[0] : {...product_parent,   product_is_in_stock: false};
+
+
     const variationsSelectedArray = getVariationAvailableValue(
-      oneChildSelected.variation_name,
+      newVariationSelected,
       children
-    );
-  
+    )
+ 
     yield put(setVariationStockStatus(variationsSelectedArray));
   
     yield put(setVariationSelected(newVariationSelected));
   
     yield put(setSelectedProduct(oneChildSelected));
-  }else{
-    yield put(setSelectedProduct({...product_parent,   product_is_in_stock: false}));
-
-    yield put(setVariationSelected(newVariationSelected));
  
-    const variationsSelectedArray = getVariationAvailableValue(
-      newVariationSelected,
-      children
-    );
-  
-    yield put(setVariationStockStatus(variationsSelectedArray));
-    
-
-
-  }
 
 }
+
+
 
 /*=====  End of Section SIDE EFFECT ======*/
 

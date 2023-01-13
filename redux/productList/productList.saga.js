@@ -4,7 +4,7 @@ import {
   convertSortValueStringQuery,
   filterConverterToQuery,
   removeItemInTaxinomieFilter,
-} from "../../utils/Product/productFilter/productFilter.utils";
+} from "../../utils/product/productFilter/productFilter.utils";
 import {
   setIsLoading,
   setProductList,

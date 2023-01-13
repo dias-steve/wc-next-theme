@@ -1,4 +1,4 @@
-import { getAddListOfNumericalFilter, getAddNumericalFilterInFilter, getRemoveNumericalFilterInFilter } from "../../utils/Product/productFilter/ProductFilter.utils";
+import { getAddListOfNumericalFilter, getAddNumericalFilterInFilter, getRemoveNumericalFilterInFilter } from "../../utils/product/productFilter/ProductFilter.utils";
 
 describe("Adding new numeric Filter",() => {
     test("Work with a first new numeric Filter", () => {

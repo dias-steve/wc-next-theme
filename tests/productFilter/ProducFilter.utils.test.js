@@ -3,7 +3,7 @@ import {
   filterConverterToQuery,
   isInTaxinomieFilter,
   removeItemInTaxinomieFilter,
-} from "../../utils/Product/productFilter/ProductFilter.utils";
+} from "../../utils/product/productFilter/ProductFilter.utils";
 
 describe("Add id in taxinomie filter", () => {
   test("Check that adding a fist id a new taxynomie filter", () => {
