@@ -3,7 +3,7 @@ import {
   addCategorieInFilter,
   isCategorySelected,
   removeCategorieInFilter,
-} from "../../../../utils/Product/Filter/ProductFilter.utils";
+} from "../../../../utils/Product/product_filter/productFilter.utils";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 

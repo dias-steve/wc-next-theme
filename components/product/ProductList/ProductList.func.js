@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from 'uuid';
-import { fetchProductListStart } from '../../../../redux/productList/productList.action';
+import { fetchProductListStart } from '../../../redux/productList/productList.action';
 
 
 

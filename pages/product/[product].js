@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import styles from './Product.module.scss';
 import {useSelector, useDispatch} from 'react-redux';
-import { setParentProduct, setParentProductStart } from '../../redux/singleproduct/singleproduct.reducer';
-import OptionVariableSelector from '../../components/productcomponents/SingleProductComposant/OptionVariationSelector/OptionVariableSelector';
+import { setParentProductStart } from '../../redux/singleproduct/singleproduct.reducer';
+import SingleProduct from '../../components/product/SingleProduct';
 
 
 const mapState = (state) => ({
@@ -31,7 +31,8 @@ export default function Product(props) {
     <div>
     
       {title}-{name}-{product_is_in_stock ? "dispo": "non dispo"}-{id}
-      <OptionVariableSelector />
+  
+      <SingleProduct.OptionVariableSelector />
     
     </div>
   )

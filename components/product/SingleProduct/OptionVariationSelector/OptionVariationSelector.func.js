@@ -1,7 +1,7 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useSelector, useDispatch } from "react-redux";
-import { setVariationSelectedStart } from "../../../../../redux/singleproduct/singleproduct.reducer";
+import { setVariationSelectedStart } from "../../../../redux/singleproduct/singleproduct.reducer";
 
 const mapState = (state) => ({
   singleProduct: state.singleproduct,

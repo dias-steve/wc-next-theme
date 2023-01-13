@@ -1,8 +1,8 @@
 import React,{useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFilter } from '../../../redux/productList/productList.action';
-import productListReducer from '../../../redux/productList/productList.reducer';
-import { addListOfNumericalFilter, addNumericalFilterInFilter } from '../../../utils/Product/Filter/ProductFilter.utils';
+import { setFilter } from '../../../../redux/productList/productList.action';
+import productListReducer from '../../../../redux/productList/productList.reducer';
+import { addListOfNumericalFilter, addNumericalFilterInFilter } from '../../../../utils/Product/productfilter/ProductFilter.utils';
 
 
 

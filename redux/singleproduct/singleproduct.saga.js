@@ -1,7 +1,7 @@
 import { takeLatest, put, all, call, select} from 'redux-saga/effects';
 
 import { setListVariations, setProductParent, setSelectedProduct, setVariationListDetailed, setVariationSelected, setVariationStockStatus, singleProductTypes } from './singleproduct.reducer';
-import { getChildBySelector, getFirstChildAvaible, getListVariationValueAvailble, getVariationAvailableValue } from '../../utils/Product/VariationSelector/ProductVariationSelector.utils';
+import { getChildBySelector, getFirstChildAvaible, getListVariationValueAvailble, getVariationAvailableValue } from '../../utils/Product/product_optionvairationselector/productVariationSelector.utils';
 
 export const getSingleProduct = (state) => state.singleproduct
 

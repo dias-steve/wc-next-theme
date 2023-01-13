@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './ProductList.module.scss';
 import ProductCard from '../ProductCard/ProductCard';
-import { ProductListContainer, withContainer } from './fonctionalcomponent/FonctionalComponant';
+import { withContainer } from './ProductList.func';
 
 
 

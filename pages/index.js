@@ -3,12 +3,13 @@ import Head from 'next/head'
 import Image from 'next/image'
 
 import { useDispatch, useSelector } from "react-redux";
-import ProductCategorieFilter from '../components/productcomponents/ProductCategorieFilter/ProductCategorieFilter'
-import ProductList from '../components/productcomponents/ProductList/ProductList'
+
+import ProductList from '../components/product/ProductList/ProductList'
 import styles from '../styles/Home.module.scss'
-import { fetchProductListStart, setProductList } from '../redux/productList/productList.action';
-import ProductFilterPrice from '../components/productcomponents/ProductFilterPrice/ProductFilterPrice';
-import ProductSortbyPrice from '../components/productcomponents/ProductSortbyPrice/ProductSortByPrice.js';
+
+
+
+import ProductFilter from '../components/product/ProductFilter';
 
 export default function Home({data}) {
 
@@ -26,9 +27,10 @@ export default function Home({data}) {
 
   return (
     <div className={styles.container}> 
-      <ProductCategorieFilter  categorieData={data} /> 
+   
 
-      <ProductSortbyPrice />
+      <ProductFilter.Categorie  categorieData={data} />
+      <ProductFilter.SortByPrice />
       <ProductList />
   
     </div>

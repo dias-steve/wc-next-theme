@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './ProductFilter.module.scss';
-import {  ProductCategorieFilterContainer, withContainer } from './fonctioncomponents/FonctionalComponents';
+import {withContainer } from './ProductCategorieFilter.func';
 
 
 /*=============================================

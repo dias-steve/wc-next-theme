@@ -38,7 +38,7 @@ export const  withContainer = (WrapperView, BtnView) => {
         }
         useEffect(() => {
             dispatch(
-                setFilter({...filter, sort: conevertStateToFilterSortValue(btnASCActive) })
+                setFilter({...filter, sort: conevertStateToFilterSortValue(btnASCActive)})
             )
     
         }, [btnASCActive])
