@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './ProductList.module.scss';
 import ProductCard from '../ProductCard/ProductCard';
-import { withContainer } from './ProductList.func';
+import { withContainer } from './_productList.func';
 
 
 

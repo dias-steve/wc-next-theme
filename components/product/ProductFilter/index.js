@@ -2,8 +2,8 @@ import ProductCategorieFilter from "./ProductCategorieFilter/ProductCategorieFil
 import ProductSortByPrice from "./ProductSortbyPrice/ProductSortByPrice";
 
 const ProductFilter = {
-    SortByPrice : ProductSortByPrice,
-    Categorie: ProductCategorieFilter
-}
+  SortByPrice: ProductSortByPrice,
+  Categorie: ProductCategorieFilter,
+};
 
 export default ProductFilter;

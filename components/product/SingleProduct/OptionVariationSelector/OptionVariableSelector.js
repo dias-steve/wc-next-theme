@@ -2,7 +2,7 @@ import React, { Children, useEffect, useState } from "react";
 
 import styles from "./OptionVariableSelector.module.scss";
 
-import {withContainer } from "./OptionVariationSelector.func";
+import {withContainer } from "./_optionVariationSelector.func";
 
 /*==========================================================================
 =             PRESENTATIONAL COMPONENT  For Option VariableSelector        =

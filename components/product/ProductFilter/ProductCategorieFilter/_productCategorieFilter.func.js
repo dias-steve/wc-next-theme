@@ -1,11 +1,11 @@
 import React from "react";
+import { isCategorySelected } from "../../../../utils/Product/productFilter/productFilter.utils";
 import {
-  isCategorySelected,
-} from "../../../../utils/Product/productFilter/productFilter.utils";
-import { addCategoryToFilter, removeCategoryToFilter } from "../../../../redux/productList/productList.reducer"
+  addCategoryToFilter,
+  removeCategoryToFilter,
+} from "../../../../redux/productList/productList.reducer";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-
 
 const mapState = (state) => ({
   filter: state.productlist.filter,
@@ -16,13 +16,12 @@ const mapState = (state) => ({
 ====================================================================*/
 
 export function withContainer(WrapperViewComponant, BtnViewComponent) {
-
   /**
-   * 
-   * 
+   *
+   *
    * Container filter
    * @param {*} category
-   * @returns 
+   * @returns
    */
   const FilterBtnContainer = ({ category }) => {
     const dispatch = useDispatch();
@@ -31,13 +30,9 @@ export function withContainer(WrapperViewComponant, BtnViewComponent) {
     const checked = isCategorySelected(term_id, filter);
     const handleClick = async (e) => {
       if (!isCategorySelected(term_id, filter)) {
-        dispatch(
-         addCategoryToFilter(term_id)
-        )
+        dispatch(addCategoryToFilter(term_id));
       } else {
-        dispatch(
-          removeCategoryToFilter(term_id)
-         )
+        dispatch(removeCategoryToFilter(term_id));
       }
     };
 
@@ -51,7 +46,7 @@ export function withContainer(WrapperViewComponant, BtnViewComponent) {
   };
 
   /**
-   * 
+   *
    * Return Principal
    */
   return function ProductCategorieFilterContainer({ categorieData }) {

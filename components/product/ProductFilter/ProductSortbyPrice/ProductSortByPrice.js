@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './ProductSortbyPrice.module.scss';
 
-import { withContainer } from './ProductSortbyPrice.func';
+import { withContainer } from './_productSortbyPrice.func';
 
 
 /*===================================================================

@@ -91,8 +91,8 @@ export function withContainer(
   }
 
   /**
-   * 
-   * 
+   *
+   *
    * Principal return
    */
   return function OptionVariableSelectorContainer() {
